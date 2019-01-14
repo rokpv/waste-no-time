@@ -1,0 +1,25 @@
+body {
+    width: 100%;
+    font-size: 16px;
+}
+
+div {
+    margin: 20px;
+}
+
+h1 {
+    margin-left: 10px;
+}
+
+span {
+    margin-right: 10px;
+}
+
+#input-time {
+    width: 60px;
+}
+
+#table-domains {
+    border: black 1px solid;
+    width: 200px;
+}
