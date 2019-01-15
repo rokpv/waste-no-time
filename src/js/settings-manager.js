@@ -46,7 +46,7 @@ const settingsManager = {
       if (this.maxTimeStorageKey in results) {
         return new Date(results[this.maxTimeStorageKey]);
       } else {
-        console.log('max time not set');
+        // console.log('max time not set');
         return new Date('1970-1-1 01:00:00');
       }
     });
@@ -58,7 +58,7 @@ const settingsManager = {
    */
   putMaxTime: function (maxTime) {
     const time = new Date(`1970-1-1 ${maxTime}:00`);
-    console.log(time);
+    // console.log(time);
     return browser.storage.local.set({
       [this.maxTimeStorageKey]: time.getTime()
     });

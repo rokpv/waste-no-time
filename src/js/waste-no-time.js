@@ -6,13 +6,13 @@ function startCountdown(tabId) {
   if (countdownRunning) {
     return;
   }
-  console.log('starting countdown');
+  // console.log('starting countdown');
   countdownRunning = true;
   countdownInterval = setInterval(countdownHandler, intervalMillis, intervalMillis, tabId);
 }
 
 function stopCountdown() {
-  console.log('stopping countdown');
+  // console.log('stopping countdown');
   clearInterval(countdownInterval);
   countdownInterval = null;
   countdownRunning = false;
@@ -24,15 +24,15 @@ function countdownHandler(interval, tabId) {
   timeManager.getTimeStoredAt().then(timeStoredAt => {
     if (now > timeStoredAt) {
       // new day, reset timer
-      console.log('resetting timer');
+      // console.log('resetting timer');
       return settingsManager.getMaxTime();
     } else {
       return timeManager.getTimeLeft();
     }
   }).then(timeLeft => {
-    console.log('time left (ms):', timeLeft - new Date('1970-1-1 0:00:00'));
+    // console.log('time left (ms):', timeLeft - new Date('1970-1-1 0:00:00'));
     if (timeLeft - new Date('1970-1-1 0:00:00') <= 0) {
-      console.log('TIME LIMIT EXCEEDED');
+      // console.log('TIME LIMIT EXCEEDED');
       browser.tabs.executeScript(tabId, {
         code: 'document.body.innerHTML = "Time\'s up! Come back tomorrow."'
       });
@@ -89,21 +89,6 @@ function setupListeners() {
     });
   });
   browser.tabs.onUpdated.addListener(tabListener);
-
-  let interval;
-  browser.extension.onConnect.addListener(port => {
-    console.log('connected');
-    port.onDisconnect.addListener(() => {
-      clearInterval(interval);
-    });
-    interval = setInterval(() => {
-      port.postMessage({
-        code: 'timeLeft',
-        time: timeLeft
-      });
-    }, 1000);
-
-  });
 }
 
 setupListeners();

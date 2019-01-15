@@ -39,7 +39,7 @@ window.addEventListener('DOMContentLoaded', function() {
   function updateMaxTime(settingsManager) {
     const maxTimeInput = document.getElementById('input-time');
     settingsManager.getMaxTime().then(maxTime => {
-      console.log(maxTime);
+      // console.log(maxTime);
       const h = maxTime.getHours().toString();
       let m = maxTime.getMinutes();
       if (m < 10) {
@@ -72,7 +72,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  console.log('running settings script');
+  // console.log('running settings script');
 
   // update views
   updateUrls(settingsManager);

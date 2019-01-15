@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   function getTime() {
     setTimeout(() => {
-      console.log('getting time');
+      // console.log('getting time');
       timeManager.getTimeLeft().then(time => {
         timeText.innerText = `${time.getHours()}:${formatTime(time.getMinutes())}:${formatTime(time.getSeconds())}`;
         getTime();

@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Waste no time",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "An extension that helps you waste less time.",
   "homepage_url": "https://github.com/rokpv/waste-no-time",
   "icons": {
@@ -27,13 +27,4 @@
       "js/waste-no-time.js"
     ]
   }
-//  "content_scripts": [
-//    {
-//      "matches": ["<all_urls>"],
-//      "js": [
-//        "js/settings.js"
-//      ]
-//    }
-//  ]
-
 }
