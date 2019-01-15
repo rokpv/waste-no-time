@@ -2,32 +2,31 @@
 <head>
   <link rel="stylesheet" type="text/css" href="../css/settings.css">
   <link rel="stylesheet" type="text/css" href="../css/general.css">
+
+  <script type="application/javascript" src="../browser-polyfill.js"></script>
+  <script src="../js/settings-manager.js"></script>
+  <script src="../js/settings.js"></script>
+
   <title>Waste no time - Settings</title>
 </head>
 <body>
   <h1>Settings</h1>
-  <div>
+  <div class="offset">
     <h2>Time wasting domains</h2>
+    <textarea id="ta-urls" rows="10" cols="50"></textarea>
+    <div>
+      <button id="btn-set-urls">Set urls</button>
+    </div>
   </div>
-  <div>
-    <table id="table-domains">
-      <thead>
-        <tr>
-          <td class="text-bold">URL</td>
-        </tr>
-      </thead>
-      <tbody id="table-domains-body">
-        <tr class="table-row">
-          <td>Hello</td>
-        </tr>
-      </tbody>
-  </table>
-  </div>
-  <div>
+
+  <div class="offset">
     <h2>Amount of time to waste</h2>
-    <span>mm:ss</span><input type="text" id="input-time">
+    <input type="text" id="input-time"><span> (HH:mm)</span>
+    <div>
+      <button id="btn-set-time">Set time</button>
+    </div>
+    <div>
+      <span id="error-time" style="visibility: collapse" class="error">Incorrect time format! Must be HH:mm.</span>
+    </div>
   </div>
 </body>
-<script type="application/javascript" src="../browser-polyfill.js"></script>
-<script src="../js/url-storage-manager.js"></script>
-<script src="../js/settings.js"></script>

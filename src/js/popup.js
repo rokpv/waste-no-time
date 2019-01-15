@@ -1,17 +1,26 @@
 // Once the DOM is ready...
 window.addEventListener('DOMContentLoaded', function() {
-    // browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    //     if (request.code === 'timeLeft') {
-    //         document.getElementById('time-left').innerText = request.time;
-    //     }
-    // });
+  function formatTime(time) {
+    if (time < 10) {
+      time = '0' + time;
+    }
+    return time;
+  }
 
-    const port = browser.extension.connect({
-        name: "Sample Communication"
-    });
-    port.onMessage.addListener(function(msg) {
-        if (msg.code === 'timeLeft') {
-            document.getElementById('time-left').innerText = msg.time;
-        }
-    });
+  function getTime() {
+    setTimeout(() => {
+      console.log('getting time');
+      timeManager.getTimeLeft().then(time => {
+        timeText.innerText = `${time.getHours()}:${formatTime(time.getMinutes())}:${formatTime(time.getSeconds())}`;
+        getTime();
+      })
+    }, 500)
+  }
+
+  const timeText = document.getElementById('time-left');
+  timeManager.getTimeLeft().then(time => {
+    timeText.innerText = `${time.getHours()}:${formatTime(time.getMinutes())}:${formatTime(time.getSeconds())}`;
+    getTime();
+  });
+
 });
